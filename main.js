@@ -8,7 +8,7 @@ function showHadith(number) {
   fetch("https://ahadith-api.herokuapp.com/api/ahadith/all/ar-tashkeel")
   .then(res => res.json())
   .then(result => {
-    if (number >= result.AllChapters.length) {
+    if (number >= result.AllChapters.length || number < 0) {
       hadith.innerHTML = "لا يوجد حديث بهذا الرقم";
     } else {
       hadith.innerHTML = result.AllChapters[number].Ar_Text;
