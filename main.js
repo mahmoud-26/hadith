@@ -1,5 +1,5 @@
 let hadith = document.querySelector(".hadith");
-let resetBtn = document.querySelector(".reset-btn");
+let prevBtn = document.querySelector(".prev-btn");
 let nextBtn = document.querySelector(".next-btn");
 let input = document.querySelector(".input");
 let form = document.querySelector(".form");
@@ -19,23 +19,32 @@ function showHadith(number) {
 let number = 0;
 
 window.onload = () => {
-  hadith.innerHTML = "تحميل...";
-  input.value = number + 1;
-  showHadith(number);
+  if (localStorage.getItem("data")) {
+    hadith.innerHTML = "تحميل...";
+    number = localStorage.getItem("data");
+    input.value = parseInt(number) + 1;
+    showHadith(number);
+  } else {
+    hadith.innerHTML = "تحميل...";
+    input.value = number + 1;
+    showHadith(number);
+  }
 };
 
 nextBtn.addEventListener("click", () => {
   hadith.innerHTML = "تحميل...";
   number++;
   input.value = number + 1;
+  localStorage.setItem("data", number);
   showHadith(number);
 });
 
-resetBtn.addEventListener("click", () => {
+prevBtn.addEventListener("click", () => {
   hadith.innerHTML = "تحميل...";
-  number = 0;
-  input.value = number + 1;
+  input.value--;
+  number = input.value - 1;
   showHadith(number);
+  localStorage.setItem("data", number);
 });
 
 form.addEventListener("submit", (e) => {
@@ -43,4 +52,5 @@ form.addEventListener("submit", (e) => {
   hadith.innerHTML = "تحميل...";
   number = input.value - 1;
   showHadith(number);
+  localStorage.setItem("data", number);
 });

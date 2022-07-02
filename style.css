@@ -39,10 +39,10 @@ body {
 .inputs {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
-.reset-btn,
+.prev-btn,
 .next-btn {
   width: 90px;
   height: 40px;
@@ -54,7 +54,7 @@ body {
   border-radius: 5px;
   background-color: var(--neon-green);
 }
-.reset-btn:active,
+.prev-btn:active,
 .next-btn:active {
   background-color: #38A46C;
 }
@@ -70,4 +70,26 @@ body {
   border-radius: 5px;
   background-color: var(--neon-green);
   color: var(--dark-blue);
+}
+@media (min-width: 900px) {
+  body {
+    width: 100%;
+    height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .card {
+    font-size: 30px;
+    padding: 30px;
+  }
+  .divider {
+    width: 100%;
+    margin: 30px 5px 30px 0;
+  }
+  .prev-btn,
+  .next-btn {
+    font-size: 30px;
+  }
 }
